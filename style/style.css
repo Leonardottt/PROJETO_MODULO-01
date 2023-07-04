@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400&display=swap');
+*{
+    margin: 0 auto;
+}
+.container{
+    display: flex;
+    padding-top: 125px;
+}
+.formEnter input{
+    border-radius: 10px;
+    padding: 5px;
+}
+.btnEnter{
+    width: 12rem;
+    border-radius: 10px;
+    border-style: none;
+    background-color: #482D83;
+    padding: 5px;
+    color: white;
+}
