@@ -31,3 +31,34 @@ label{
     color: white;
     width: 250px;
 }
+/* sideBarMentorClass */
+.mentorTxt{
+    display: inline-flex;
+    margin: 20px;
+}
+#fTxt{
+    color: #FBB04D;
+} 
+#sTxt{
+    color: white;
+}
+.sideMentor{
+    position: fixed;
+    font-family:Arial, sans-serif;
+    font-size: 12px;
+    float: left;
+    width: 30vh;
+    height: 100vh;
+    text-align: center;
+    background: #482D83;
+}
+.sideMenu{
+    text-align: justify;
+    margin-left: 25px;
+}
+.sideMenu div{
+    color: white;
+    font-size: 16px;
+    /* border: 1px solid; */
+    padding: 12px;
+}
