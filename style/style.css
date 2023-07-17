@@ -100,15 +100,21 @@ input::placeholder {
 /*CAIXA PRINCIPAL DE INFORMAÇÃO*/
 .titleCard{
     position: absolute;
-    border: 1px solid;
+    /* border: 1px solid; */
     margin-top: 20vh;
     margin-left: 36vh;
-
+    display: flex;
+    padding: 5px;
+}
+.backBtn{
+    margin-right: 15px;
+    cursor: pointer;
 }
 .mainCard{
     padding: 15px;
     float: right;
     margin-top: 25vh;
+    margin-right: 25px;
     width: 170vh;
     height: 50vh;
     border-radius: 15px;
@@ -119,13 +125,39 @@ input::placeholder {
     padding: 10px;
 }
 
+/* TITULO DO CARD PRINCIPAL */
+.titleMain{
+    font-size: 20px;
+}
+
 /* CADASTRO DE NOVO MENTOR */
 .mainInput {
     display: flex;
     flex-direction: column;
+    margin-left: 15px;
     padding: 10px;
     margin-bottom: 10px;
 }
 .cardForm{
     display: flex;
+}
+    
+/* BOTÕES */
+
+.btnGet{
+    width: 325px;
+    height: 40px;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    padding: 5px;
+}
+.btnSave{
+    font-size: 15px;
+    color: white;
+    width: 350px;
+    height: 35px;
+    border: none;
+    background-color: #482D83;
+    border-radius: 10px;
+    margin-left: 5px;
 }

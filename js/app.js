@@ -1,22 +1,25 @@
-// ===========>>>  COMEÇANDO JS DE LOGIN 
-const login = document.querySelector("#btn-entrar");
-const SmallMsgerror = document.querySelector("#smallerror")
-login.addEventListener("click" , async(e) => {
-  e.preventDefault();
-    try {
-    const userLogin = document.querySelector("#loginInput").value
-    const userPassword = document.querySelector("#passUserInput").value
 
-    //VERIFICANDO SE USUARIO EXISTE
-      const existingUser = await userExists(userLogin, userPassword);
-      if (existingUser) {
-        window.location.replace("content/home.html");
-    } else {
-        // SmallMsgerror.innerHTML = `O nome ${userLogin} não esta cadastrado(a).`
-        alert("Usuário não cadastrado")
-    }
-    } catch(error) {
-        console.log(error)
-    }     
 
-})
+const renderMentores = (Mentores) => {
+    const tabela = document.querySelector("tbody")
+  
+    Mentores.forEach(Mentores => {
+      tabela.innerHTML = tabela.innerHTML + `
+        <tr> 
+          <td>${Mentores.nomeMentor}</td>
+          <td>${Mentores.emailMentor}</td>
+        </tr>
+      `
+    })
+  }
+  
+  const getMentores = async () => {
+    const response = await fetch("http://localhost:3000/Mentores")
+    const Mentores = await response.json()
+  
+    renderMentores(Mentores)
+  }
+  
+  getMentores()
+  
+  
