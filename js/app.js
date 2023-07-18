@@ -1,18 +1,56 @@
+//----------------------------------
+const form = document.querySelector("#formulario");
+
 const renderMentores = (mentores) => {
-  const table = document.querySelector("tbody")
+  const table = document.querySelector("tbody");
+  let tableContent = "";
+
   mentores.forEach(mentor => {
-      table.innerHTML = table.innerHTML + 
-      `<tr>
-          <td>${mentor.nome}</td>
-          <td>${mentor.email}</td>
-          <!--<td><button>Alterar</button><button>Excluir</button></td>-->
-      </tr>`})
-}
+    tableContent += `
+      <tr>
+        <td>${mentor.id}</td>
+        <td>${mentor.nome}</td>
+        <td>${mentor.email}</td>
+        <td>
+          <button onclick="alteraItem(${mentor.id})"><i class='bx bx-edit-alt'></i></button>
+        </td>
+        <td>
+          <button onclick="deleteItem(${mentor.id})"><i class='bx bx-trash'></i></button>
+        </td>
+      </tr>`;
+  });
 
-const getMentores = async() => {
-  const response = await fetch("http://localhost:3000/mentores")
-  const mentores = await response.json()
-  renderMentores(mentores)
-}
+  table.innerHTML = tableContent;
+};
 
-getMentores()
+const getMentores = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/mentores");
+    if (!response.ok) {
+      throw new Error('Erro ao buscar mentores.');
+    }
+    const mentores = await response.json();
+    renderMentores(mentores);
+  } catch (error) {
+    console.error("Erro ao buscar mentores:", error);
+  }
+};
+
+
+//----------------------FUNCAO QUE IRÁ DELETAR--------------------------------
+const deleteItem = async (mentorId) => {
+  try {
+    const response = await fetch(`http://localhost:3000/mentores/${mentorId}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      throw new Error('Erro ao deletar o mentor.');
+    }
+
+    getMentores();
+  } catch (error) {
+    console.error("Erro ao deletar mentor:", error);
+  }
+};
+
+getMentores();
