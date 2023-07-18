@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/style.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script src="../js/cadastramento.js" defer></script>
-
     <title>Novo Mentor</title>
 </head>
 <body>
@@ -40,7 +37,7 @@
   <section>
     <div class="titleCard">
       <div class="backBtn">
-        <i class="fa-solid fa-arrow-left" style=" background-color: #c5bebe; border-radius: 50%; padding: 14px;"></i>
+        <a href="mentorIndex.html"><i class="fa-solid fa-arrow-left" style=" background-color: #c5bebe; border-radius: 50%; padding: 14px;"></i></a>
       </div>
       <div class="titleMain">
         <h3>Novo mentor</h3>
@@ -55,21 +52,21 @@
       <div>
         <form class="cardForm" id="formulario">
           <div class="mainInput">
-            <label style="color: grey;">Nome</label>
+            <label for="nomeMentor" style="color: grey;">Nome</label>
             <input class="btnGet" id="nomeMentor" placeholder="Insira o nome.">
             <br>
           </div>
           <div class="mainInput">
-              <label style="color: grey;">E-mail</label>
-              <input class="btnGet" id="emailMento" placeholder="Insira o e-mail.">
-              
-            </div>
-        </form>
-        <div >
+            <label for="emailMentor" style="color: grey;">E-mail</label>
+            <input class="btnGet" id="emailMentor" placeholder="Insira o e-mail.">
+          </div>          
           <button type="submit" class="btnSave" id="salvaMentor">Salvar</button>
-        </div>
+        </form>
       </div>
     </div>
   </section>
+
+  <script src="../js/registration.js" defer></script>
+
 </body>
 </html>

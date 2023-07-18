@@ -160,4 +160,5 @@ input::placeholder {
     background-color: #482D83;
     border-radius: 10px;
     margin-left: 5px;
+    cursor: pointer;
 }
