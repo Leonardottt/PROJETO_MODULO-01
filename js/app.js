@@ -36,6 +36,10 @@ const getMentores = async () => {
   }
 };
 
+//-----------------------------EDITAR------------------
+const alteraItem = (id) => {
+  window.location = `mentorAltera.html?id=${id}`
+}
 
 //----------------------FUNCAO QUE IRÁ DELETAR--------------------------------
 const deleteItem = async (mentorId) => {

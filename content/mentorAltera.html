@@ -37,7 +37,9 @@
   <section>
     <div class="titleCard">
       <div class="backBtn">
-        <i class="fa-solid fa-arrow-left" style=" background-color: #c5bebe; border-radius: 50%; padding: 14px;"></i>
+        <a href="mentorIndex.html">
+          <i class="fa-solid fa-arrow-left" style=" background-color: #c5bebe; border-radius: 50%; padding: 14px;"></i>
+        </a>
       </div>
       <div class="titleMain">
         <h3>Alterar dados</h3>
@@ -50,23 +52,22 @@
       </div>
       <hr>
       <div>
-        <form class="cardForm">
+        <form class="cardForm" id="formulario">
           <div class="mainInput">
             <label style="color: grey;">Nome</label>
-            <input class="btnGet" placeholder="Insira o nome.">
+            <input class="btnGet" id="nameChange" placeholder="Insira o nome.">
             <br>
           </div>
           <div class="mainInput">
               <label style="color: grey;">E-mail</label>
-              <input class="btnGet" placeholder="Insira o e-mail.">
+              <input class="btnGet" id="emailChange" placeholder="Insira o e-mail.">
               
             </div>
+            <button class="btnSave" id="alteraMentor">Salvar</button>
         </form>
-        <div >
-          <button class="btnSave" id="alteraMentor">Salvar</button>
-        </div>
       </div>
     </div>
   </section>
+  <script src="../js/altera.js"></script>
 </body>
 </html>
