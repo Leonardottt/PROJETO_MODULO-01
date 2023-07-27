@@ -32,7 +32,7 @@ const renderMentor = (mentores) => {
 // ----------------- FUNÇÃO PARA BUSCAR A LISTA DE MENTORES -----------------
 const getMentores = async () => {
   try {
-    const response = await fetch("http://localhost:3000/mentores");
+    const response = await fetch("https://apimentorclass.onrender.com/mentores");
     if (!response.ok) {
       throw new Error('Erro ao buscar mentores.');
     }
@@ -79,7 +79,7 @@ const editarMentor = (id) => {
 // --------------DELETA MENTOR--------------------------//
 const excluirMentor = async (id) => {
     try {
-      await fetch(`http://localhost:3000/mentores/${id}`, {
+      await fetch(`https://apimentorclass.onrender.com/mentores/${id}`, {
         method: 'DELETE'
       });
   

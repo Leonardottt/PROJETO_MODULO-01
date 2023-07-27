@@ -12,14 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ----------------- BUSCANDO OS DADOS DO MENTOR -----------------
   const buscaMentor = async () => {
-    const response = await fetch(`http://localhost:3000/mentores/${mentoresId}`);
+    const response = await fetch(`https://apimentorclass.onrender.com/mentores/${mentoresId}`);
     const mentor = await response.json();
     return mentor;
   };
 
   // ----------------- ATUALIZANDO OS DADOS DO MENTOR -----------------
   const alteraItem = async (mentor) => {
-    await fetch(`http://localhost:3000/mentores/${mentoresId}`, {
+    await fetch(`https://apimentorclass.onrender.com/mentores/${mentoresId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
