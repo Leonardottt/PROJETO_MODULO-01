@@ -3,36 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <title>Document</title>
+    <link rel="stylesheet" href="style/login/login.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Sora:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>loginMentor</title>
+
 </head>
 <body>
-    <form class="container" id="openLogin">
-        <div class="cardTop">
-            <h7>Seja bem-vindo!</h7>
-            <h3><b>Realize seu login</b></h3>
-        </div>
+    <div class="cardContentLogin">
+        <div class="cardFormLogin">
+            <div class="headerFormLogin">
+                <h5>Seja Bem vindo!</h5>
+                <h3>Realize seu login</h3>
+            </div>
+            <form id="formLogin">
+                <label for="email">E-mail</label>
+                <input class="inputLogin" type="email" name="email" class="" id="emailLoginIndex" placeholder="insira seu e-mail" required>
 
-        <div class="inputLogin">
-            <label for="login">E-mail</label>
-            <br>
-            <input type="text"  class="username" id="login" placeholder="Digite seu e-mail" required>
+                <label  for="password" >Senha</label>
+                <input type="password" class="inputLogin" id="passwordLoginIndex" placeholder="Digite sua senha " required>
+                <div class="indicator">
+                    <div class="checkboxLogin">
+                        <input type="checkbox"><b>Lembrar-me</b>
+                    </div>
+                    <a href="#">Esqueci minha senha</a>
+                </div>
+                <button type="submit" id="btnLogin" class="inputEnterLogin">
+                    Entrar
+                </button>
+            </form>
         </div>
-        <div class="inputPass">
-            <label for="senha">Senha</label>
-            <br>
-            
-            <input type="password" class="password" id="password" placeholder="Digite sua senha " required>
-        </div>
-        <div class="rodapeIndex">
-            <input type="checkbox"><b>Lembrar-me</b>
-            <a  class="cadastras-login" href="/cadastrar.html">Esqueci minha senha</a>
-        </div>
-        <div class="inputEntra">
-            <button id="btn-entrar">Entrar</button>
-        </div>
-    </form>
-<script src="app.js"></script>
+    </div>
+<script src="js/login/loginIndex.js"></script>
 </body>
 </html>

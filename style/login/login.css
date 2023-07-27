@@ -1,0 +1,49 @@
+.cardContentLogin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 100vh;
+}
+.cardFormLogin{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.headerFormLogin{
+    margin-bottom: 5px;
+}
+#formLogin{
+    display: flex;
+    flex-direction: column;
+}
+.indicator{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0 40px 0;
+}
+.indicator a{
+    text-decoration:none;
+    color: inherit;
+}
+.inputLogin,.inputEnterLogin{
+    width: 400px;
+    height: 56px;
+    border-radius: 16px;
+    padding-left: 16px;
+    border: 1px solid #E0E0E0;
+}
+.inputEnterLogin{
+    background: #482D83;
+    color: white;
+    border: none;
+}
+.inputEnterLogin:hover{
+    background: #564696;
+    /* transition: 0.5s; */
+    transform: translateY(-2px);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
