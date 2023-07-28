@@ -55,12 +55,6 @@
       "mentor": "Teemo",
       "checkbox": false,
       "id": 6
-    },
-    {
-      "mentoria": "teste",
-      "mentor": "Ekko",
-      "checkbox": true,
-      "id": 7
     }
   ],
   "semanas": [
@@ -124,10 +118,22 @@
   ],
   "alunos": [
     {
-      "aluno": "teste 2",
+      "aluno": "Guts",
       "email": "desenvolvedor199759@gmail.com",
-      "turma": "turma2",
+      "turma": "turma 3",
+      "id": 1
+    },
+    {
+      "aluno": "casca",
+      "email": "desenvolvedor199759@gmail.com",
+      "turma": "turma 3",
       "id": 2
+    },
+    {
+      "aluno": "Grifith",
+      "email": "desenvolvedor199759@gmail.com",
+      "turma": "turma 6",
+      "id": 4
     }
   ]
 }

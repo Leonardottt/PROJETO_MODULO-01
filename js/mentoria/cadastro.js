@@ -1,7 +1,7 @@
 //-----------------PEGA A ID NOS MENTORES PARA USAR NO SELECT-------------------
 const buscarMentor = async (id) => {
     try {
-        const resposta = await fetch(`https://apimentorclass.onrender.com/mentores/${id}`);
+        const resposta = await fetch(`http://localhost:3000/mentores/${id}`);
         const mentor = await resposta.json();
         return mentor;
     } catch (error) {
@@ -13,7 +13,7 @@ const buscarMentor = async (id) => {
 //-------------PEGA AS ID's DOS MENTORES PARA USAR NO SELECT(ACESSA TUDO)----------------------//
 const buscarMentores = async () => {
     try {
-        const resposta = await fetch(`https://apimentorclass.onrender.com/mentores`);
+        const resposta = await fetch(`http://localhost:3000/mentores`);
         const mentores = await resposta.json();
         return mentores;
     } catch (error) {
@@ -25,7 +25,7 @@ const buscarMentores = async () => {
 //--------INFORMAÇÃO OBTIDA NOS CÓDIGOS ANTERIORES INSERIDA AQUI----------//
 const carregarSelect = async () => {
     const mentorSelect = document.getElementById('nomeMentor');
-    const opcaoVazia = new Option('Selecione um mentor...');
+    const opcaoVazia = new Option('Selecione um mentor...', '');
     mentorSelect.options.add(opcaoVazia);
 
     try {
@@ -41,11 +41,10 @@ const carregarSelect = async () => {
 
 carregarSelect();
 
-
 //------------NOVAMETORIA-----------------//
 const novaMetoria = async (mentorias) => {
     try {
-        await fetch('https://apimentorclass.onrender.com/mentorias', {
+        await fetch('http://localhost:3000/mentorias', {
             method: 'POST',
             headers: {
                 "ACCEPT": 'application/json, text/plain, */*',
@@ -67,6 +66,12 @@ formulario.addEventListener('submit', async (event) => {
     const mentoria = formulario.elements['nomeMentoria'].value;
     const mentor = formulario.elements['nomeMentor'].value;
     const checkbox = formulario.elements['statusToggle'].checked;
+
+    // Verifica se um mentor foi selecionado antes de continuar
+    if (!mentor || mentor === '') {
+        alert("Por favor, selecione um mentor antes de criar a nova mentoria.");
+        return;
+    }
 
     const mentorObjeto = await buscarMentor(mentor);
     if (!mentorObjeto) {

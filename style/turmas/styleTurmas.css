@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;1,200&family=Sora:wght@300;400&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Sora', sans-serif;
 }
-a{
-    text-decoration:none;
-}
+
 
 /* --------------TELA MENTORES - INDEX ---------------------------------------*/
 
@@ -32,10 +32,11 @@ a{
 .titleSideBar{
     display: flex;
     margin: 20px;
-    font-size: 20px
+    font-size: 20px;
 }
 .titleSideBar h1{
-    font-size:25px
+    font-size:25px;
+    font-family: 'Sora', sans-serif;
 }
 #fTxt{
     color: #FBB04D;
@@ -47,6 +48,7 @@ a{
 .sideMenu{
     text-align: justify;
     margin-left: 15px;
+    font-family: 'Sora', sans-serif;
 }
 .sideMenu div{
     margin-left: 25px;
@@ -70,7 +72,6 @@ a{
 }
 .btnSideBar i{
     margin-right: 10px
-    /* margin-left: 5px; */
 }
 
 
@@ -86,6 +87,7 @@ a{
     width: 100%;
     height: 130px;
     background-color: rgb(255, 255, 255);
+    
 }
 .headerUserContent{
     display: flex;
@@ -177,6 +179,8 @@ searchBtn{
 .headerTab{
     width: 100%;
     text-align: center;
+    max-width: 75px;
+    font-size: 15px;
 }
 
 .headerTabAct{
@@ -194,14 +198,14 @@ searchBtn{
     color: white;
     background:#482D83;
     height: 65px;
+    font-size: 12px;
     padding: 24px 40px;
-    /* max-width: 100%; */
+    /* padding: 15px; */
 }
 
 .dataList{
     height: 80px;
-    padding: 28px 40px;
-    align-items: center ;
+    padding: 17px 30px;
     margin: -17px 0;
 }
 .dataList :nth-child(1){
@@ -213,7 +217,7 @@ searchBtn{
 }
 
 .colorChangeOdd{
-    background-color: #b1b0b0;
+    background-color: #d6d5d5;
 }
 .colorChangeEven{
     background-color: #f2f0f0;
@@ -235,3 +239,19 @@ searchBtn{
 .btnIcons i{
     margin-left: 3px
 }
+
+.chekedOn{ 
+    color: #00C247;
+    background: #D9FEE6;
+    padding: 6px 18px;
+    border-radius: 8px;
+}
+.chekedOff{
+    color: #FF3333;
+    background: #FFE1E1;
+    padding: 7px 10px;
+    border-radius: 8px;
+
+}
+
+

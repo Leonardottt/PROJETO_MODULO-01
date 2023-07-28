@@ -1,9 +1,11 @@
+//----OBTÉM INFORMAÇÕES DO FORMULÁRIO E SALVA NA API COMO NOVA MENTORIA-----//
 const formulario = document.getElementById('formulario');
 let mentoriasId = null;
 
+//----BUSCA UM MENTOR PELO ID NA API------//
 const buscarMentor = async (id) => {
     try {
-        const resposta = await fetch(`https://apimentorclass.onrender.com/mentores/${id}`);
+        const resposta = await fetch(`http://localhost:3000/mentores/${id}`);
         const mentor = await resposta.json();
         return mentor;
     } catch (error) {
@@ -12,9 +14,10 @@ const buscarMentor = async (id) => {
     }
 };
 
+//----BUSCA TODOS OS MENTORES NA API------//
 const buscarMentores = async () => {
     try {
-        const resposta = await fetch(`https://apimentorclass.onrender.com/mentores`);
+        const resposta = await fetch(`http://localhost:3000/mentores`);
         const mentores = await resposta.json();
         return mentores;
     } catch (error) {
@@ -23,6 +26,7 @@ const buscarMentores = async () => {
     }
 };
 
+//----CARREGA AS OPÇÕES DO SELECT COM OS MENTORES DA API------//
 const carregarSelect = async () => {
     const mentorSelect = document.getElementById('nomeMentor');
 
@@ -46,21 +50,80 @@ const carregarSelect = async () => {
     }
 };
 
+carregarSelect();
+
+//----CRIA UMA NOVA MENTORIA NA API-----//
+const novaMetoria = async (mentorias) => {
+    try {
+        await fetch('http://localhost:3000/mentorias', {
+            method: 'POST',
+            headers: {
+                "ACCEPT": 'application/json, text/plain, */*',
+                "CONTENT-TYPE": 'application/json'
+            },
+            body: JSON.stringify(mentorias)
+        });
+        window.location = "./mentoriaIndex.html";
+    } catch (error) {
+        console.error("ERRO AO CRIAR NOVA MENTORIA:", error);
+    }
+};
+
+//----ADICIONA EVENTO AO FORMULÁRIO PARA CRIAR UMA NOVA MENTORIA-----//
+formulario.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const mentoria = formulario.elements['nomeMentoria'].value;
+    const mentor = formulario.elements['nomeMentor'].value;
+    const checkbox = formulario.elements['statusToggle'].checked;
+
+    // Verifica se um mentor foi selecionado antes de continuar
+    if (!mentor || mentor === '') {
+        alert("Por favor, selecione um mentor antes de criar a nova mentoria.");
+        return;
+    }
+
+    const mentorObjeto = await buscarMentor(mentor);
+    if (!mentorObjeto) {
+        console.error("MENTOR NÃO ENCONTRADO.");
+        return;
+    }
+
+    const mentorias = {
+        mentoria,
+        mentor: mentorObjeto.nome,
+        checkbox
+    };
+
+    novaMetoria(mentorias);
+});
+
+//----ALTERA O TEXTO DO STATUS ENTRE "Ativo" E "Inativo"-----//
+const toggleStatus = () => {
+    const checkbox = document.getElementById('statusToggle').checked;
+    const statusTxt = document.getElementById('statusTxt');
+
+    statusTxt.innerText = checkbox ? "Ativo" : "Inativo";
+};
+
+//----OBTÉM O ID DA URL PARA BUSCAR AS INFORMAÇÕES DA MENTORIA-----//
 const getIdUrl = () => {
     const paramsString = window.location.search;
     const params = new URLSearchParams(paramsString);
     mentoriasId = params.get('id');
 };
 
+//----BUSCA AS INFORMAÇÕES DA MENTORIA NA API PELO ID-----//
 const buscartitulomentorias = async () => {
-    const resposta = await fetch(`https://apimentorclass.onrender.com/mentorias/${mentoriasId}`);
+    const resposta = await fetch(`http://localhost:3000/mentorias/${mentoriasId}`);
     const mentorias = await resposta.json();
     return mentorias;
 };
 
+//----EDITA A MENTORIA NA API-----//
 const editarMetoria = async (mentorias) => {
     try {
-        await fetch(`https://apimentorclass.onrender.com/mentorias/${mentoriasId}`, {
+        await fetch(`http://localhost:3000/mentorias/${mentoriasId}`, {
             method: 'PUT',
             headers: {
                 "Accept": 'application/json, text/plain, */*',
@@ -75,6 +138,7 @@ const editarMetoria = async (mentorias) => {
     }
 };
 
+//----CARREGA OS DADOS DO FORMULÁRIO COM AS INFORMAÇÕES DA MENTORIA-----//
 const carregarDadosFormulario = async (mentorias) => {
     if (mentorias) {
         document.getElementById('nomeMentoria').value = mentorias.mentoria;
@@ -90,44 +154,12 @@ const carregarDadosFormulario = async (mentorias) => {
     }
 };
 
-const toggleStatus = () => {
-    const checkbox = document.getElementById('statusToggle').checked;
-    const inativo = document.getElementById('statusTxt');
-    if (checkbox === true) {
-        inativo.innerText = "Ativo";
-    } else {
-        inativo.innerText = "Inativo";
-    }
-};
-
+//----CARREGA OS DADOS DA MENTORIA-----//
 const carregarDados = async () => {
     getIdUrl();
     const titulomentorias = await buscartitulomentorias();
     await carregarSelect();
     carregarDadosFormulario(titulomentorias);
 };
-
-formulario.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const mentoria = formulario.elements['nomeMentoria'].value;
-    const mentor = formulario.elements['nomeMentor'].value;
-    const checkbox = formulario.elements['statusToggle'].checked;
-
-    // Verifica se um mentor foi selecionado antes de continuar
-    if (!mentor || mentor === '') {
-        alert("Por favor, selecione um mentor antes de editar a mentoria.");
-        return;
-    }
-
-    const mentorObjeto = await buscarMentor(mentor);
-    const titulomentorias = {
-        mentoria,
-        mentor: mentorObjeto.nome,
-        checkbox
-    };
-
-    editarMetoria(titulomentorias);
-});
 
 carregarDados();

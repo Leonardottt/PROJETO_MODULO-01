@@ -1,7 +1,7 @@
 //------------declarada a var mentorsData como uma array vazia---------//
 let mentorsData = [];
 
-const renderMentor = (mentores) => {
+const renderAlunos = (alunos) => {
   const dataHeaderFirst = document.getElementById('dataHeaderFirst');
   const dataHeaderSecond = document.getElementById('dataHeaderSecond');
   const dataHeaderThird = document.getElementById('dataHeaderThird');
@@ -10,19 +10,19 @@ const renderMentor = (mentores) => {
   dataHeaderSecond.innerHTML = '';
   dataHeaderThird.innerHTML = '';
 
-  mentores.forEach((mentor, index) => {
+  alunos.forEach((aluno, index) => {
     const btnList = index % 2 === 0 ? 'colorChangeOdd' : 'colorChangeEven';
 
     dataHeaderFirst.innerHTML += `
-      <p class="dataList ${btnList}">${mentor.nome}</p>
+      <p class="dataList ${btnList}">${aluno.aluno}</p>
     `;
     dataHeaderSecond.innerHTML += `
-      <p class="dataList ${btnList}">${mentor.email}</p>
+      <p class="dataList ${btnList}">${aluno.email}</p>
     `;
     dataHeaderThird.innerHTML += `
       <div class="dataList headerContent ${btnList}">
-        <button onclick="editarMentor(${mentor.id})" class="btnIcons btnEdit"><i class="fa-solid fa-pencil"></i></button>
-        <button onclick="excluirMentor(${mentor.id})" class="btnIcons btnTrash"><i class="fa-solid fa-trash"></i></button>
+        <button onclick="editarMentor(${aluno.id})" class="btnIcons btnEdit"><i class="fa-solid fa-pencil"></i></button>
+        <button onclick="excluirMentor(${aluno.id})" class="btnIcons btnTrash"><i class="fa-solid fa-trash"></i></button>
       </div>
     `;
   });
@@ -32,17 +32,17 @@ const renderMentor = (mentores) => {
 
 // ----------------- FUNÇÃO PARA BUSCAR A LISTA DE MENTORES -----------------//
 
-const getMentores = async () => {
+const getAlunos = async () => {
   try {
-    const response = await fetch("http://localhost:3000/mentores");
+    const response = await fetch("http://localhost:3000/alunos");
     if (!response.ok) {
-      throw new Error('Erro ao buscar mentores.');
+      throw new Error('Erro ao buscar alunos.');
     }
-    const mentores = await response.json();
-    mentorsData.push(...mentores);
-    renderMentor(mentores); 
+    const alunos = await response.json();
+    mentorsData.push(...alunos);
+    renderAlunos(alunos); 
   } catch (error) {
-    console.error("Erro ao buscar mentores:", error);
+    console.error("Erro ao buscar alunos:", error);
   }
 };
 
@@ -51,28 +51,28 @@ const getMentores = async () => {
 
 const searchInput = document.getElementById('searchInput');
 
-const filterMentores = () => {
+const filterAlunos = () => {
   const searchTerm = searchInput.value.toLowerCase();
-  const filteredMentores = mentorsData.filter(mentor =>
-    mentor.nome.toLowerCase().includes(searchTerm) ||
-    mentor.email.toLowerCase().includes(searchTerm)
+  const filteredAlunos = mentorsData.filter(aluno =>
+    aluno.aluno.toLowerCase().includes(searchTerm) ||
+    aluno.email.toLowerCase().includes(searchTerm)
   );
-  renderMentor(filteredMentores); 
+  renderAlunos(filteredAlunos); 
 };
 
 //-------------EVENTO DE DIGITAÇÃO NO CAMPO DE PESQUISA--------//
-searchInput.addEventListener('input', filterMentores);
+searchInput.addEventListener('input', filterAlunos);
 
 
 //-------------------NEW MENTOR---------------------//
-const newMentorBtn = document.getElementById('newMentorBtn');
-  newMentorBtn.addEventListener('click', () => {
-    window.location = "mentorCadastro.html";
+const newStudentBtn = document.getElementById('newStudentBtn');
+newStudentBtn.addEventListener('click', () => {
+    window.location = "alunoCadastro.html";
   });
 
 // --------------EDITA MENTOR-------------------//
 const editarMentor = (id) => {
-    window.location = `mentorEditavel.html?id=${id}`
+    window.location = `alunoEditavel.html?id=${id}`
 // console.log('Editar Mentor:', idMentor);
 
 };
@@ -81,19 +81,19 @@ const editarMentor = (id) => {
 // --------------DELETA MENTOR--------------------------//
 const excluirMentor = async (id) => {
     try {
-      await fetch(`http://localhost:3000/mentores/${id}`, {
+      await fetch(`http://localhost:3000/alunos/${id}`, {
         method: 'DELETE'
       });
   
 //---------------------REMOVE O MENTOR DO ARRAY mentorsData local-----------//
-      mentorsData = mentorsData.filter(mentor => mentor.id !== id);
+      mentorsData = mentorsData.filter(aluno => aluno.id !== id);
   
 //Atualiza lista de mentores na página
-      renderMentor(mentorsData);
+      renderAlunos(mentorsData);
     } catch (error) {
       console.error('Erro ao excluir mentor:', error);
     }
   };
 
 //----------BUSCAR E RENDERIZA OS DADOS DOS MENTORES-----------//
-getMentores();
+getAlunos();
