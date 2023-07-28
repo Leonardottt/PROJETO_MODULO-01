@@ -197,8 +197,8 @@ searchBtn{
 
 .dataList{
     height: 80px;
-    padding: 28px 40px;
-    align-items: center ;
+    padding: 17px 30px;
+    /* align-items: center; */
     margin: -17px 0;
 }
 .dataList :nth-child(1){

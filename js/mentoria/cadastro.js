@@ -1,95 +1,92 @@
-const buscarMentor = async (id)=> {
-    const resposta = await fetch(`http://localhost:3000/mentores/${id}`)
-    const mentor = await resposta.json()
-    return mentor
-}
+//-----------------PEGA A ID NOS MENTORES PARA USAR NO SELECT-------------------
+const buscarMentor = async (id) => {
+    try {
+        const resposta = await fetch(`http://localhost:3000/mentores/${id}`);
+        const mentor = await resposta.json();
+        return mentor;
+    } catch (error) {
+        console.error("ERRO AO BUSCAR MENTOR:", error);
+        return null;
+    }
+};
 
-const buscarMentores = async ()=> {
-    const resposta = await fetch(`http://localhost:3000/mentores`)
-    const mentores = await resposta.json()
-    return mentores
-}
+//-------------PEGA AS ID's DOS MENTORES PARA USAR NO SELECT(ACESSA TUDO)----------------------//
+const buscarMentores = async () => {
+    try {
+        const resposta = await fetch(`http://localhost:3000/mentores`);
+        const mentores = await resposta.json();
+        return mentores;
+    } catch (error) {
+        console.error("ERRO AO BUSCAR MENTORES:", error);
+        return [];
+    }
+};
 
-const carregarSelect = async ()=> {
-    const mentores = await buscarMentores()
-    const mentorSelect = document.getElementById('nomeMentor')
-    
-    const opcaoVazia = new Option('Selecione um mentor...')
-    mentorSelect.options.add(opcaoVazia)
+//--------INFORMAÇÃO OBTIDA NOS CÓDIGOS ANTERIORES INSERIDA AQUI----------//
+const carregarSelect = async () => {
+    const mentorSelect = document.getElementById('nomeMentor');
+    const opcaoVazia = new Option('Selecione um mentor...');
+    mentorSelect.options.add(opcaoVazia);
 
-    mentores.forEach(mentores => {
-    const opcao = new Option(mentores.nome, mentores.id)
-    mentorSelect.options.add(opcao)
-    });
-}
-carregarSelect()
+    try {
+        const mentores = await buscarMentores();
+        mentores.forEach((mentor) => {
+            const opcao = new Option(mentor.nome, mentor.id);
+            mentorSelect.options.add(opcao);
+        });
+    } catch (error) {
+        console.error("ERRO AO CARREGAR A LISTA DE MENTORES:", error);
+    }
+};
+
+carregarSelect();
 
 
+//------------NOVAMETORIA-----------------//
 const novaMetoria = async (mentorias) => {
     try {
-        await fetch('http://localhost:3000/mentorias',{
-        method: 'POST',
-        headers: {
-            "Accept": 'application/json, text/plain, */*',
-            "Content-Type": 'application/json'
-        },
-        body: JSON.stringify(mentorias)
-    });
-    window.location = "mentoriaIndex.html";
+        await fetch('http://localhost:3000/mentorias', {
+            method: 'POST',
+            headers: {
+                "ACCEPT": 'application/json, text/plain, */*',
+                "CONTENT-TYPE": 'application/json'
+            },
+            body: JSON.stringify(mentorias)
+        });
+        window.location = "./mentoriaIndex.html";
     } catch (error) {
-        console.error("Erro ao criar novo mentor:", error);
+        console.error("ERRO AO CRIAR NOVA MENTORIA:", error);
     }
-}
+};
 
+// ADICIONA EVENTO AO FORMULÁRIO PARA CRIAR NOVA MENTORIA
+const formulario = document.getElementById('formulario');
+formulario.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
+    const mentoria = formulario.elements['nomeMentoria'].value;
+    const mentor = formulario.elements['nomeMentor'].value;
+    const checkbox = formulario.elements['statusToggle'].checked;
 
-const formulario = document.getElementById('formulario')
+    const mentorObjeto = await buscarMentor(mentor);
+    if (!mentorObjeto) {
+        console.error("MENTOR NÃO ENCONTRADO.");
+        return;
+    }
 
-formulario.addEventListener('submit', async(event) => {
-    event.preventDefault()
-
-    const mentoria = formulario.elements['nomeMentoria'].value
-    const mentor = formulario.elements['nomeMentor'].value
-    const checkbox = formulario.elements['statusToggle'].checked
-
-    const mentorObjeto = await buscarMentor(mentor)
     const mentorias = {
         mentoria,
-        mentor: mentorObjeto.mentor,
+        mentor: mentorObjeto.nome,
         checkbox
-    }
+    };
 
-    novaMetoria(mentorias)
+    novaMetoria(mentorias);
+});
 
-})
-
-
+// FUNÇÃO: TOGGLESTATUS
 const toggleStatus = () => {
     const checkbox = document.getElementById('statusToggle').checked;
     const statusTxt = document.getElementById('statusTxt');
 
-    if (checkbox) {
-        statusTxt.innerText = "Ativo";
-    } else {
-        statusTxt.innerText = "Inativo";
-    }
+    statusTxt.innerText = checkbox ? "Ativo" : "Inativo";
 };
-
-
-
-//vai para pagina mentoias
-const redirectToMentorias = () => {
-    window.location = "mentorIndex.html"
-  }
- //vai para pagina turmas
- const redirectToClasses = () => {
-    window.location = "content\turmas\turmasIndex.html"
- }
- //vai para pagina alunos
- const redirectToAlunos = () => {
-    window.location = "content\alunos\alunosIndex.html"
- }
- //retorna a pag novoMentor
- const redirectToMentores = () => {
-   window.location = "mentorIndex.html"
- }

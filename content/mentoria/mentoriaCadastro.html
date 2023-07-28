@@ -32,30 +32,38 @@
                     <h1 id="sTxt">Class</h1>
                 </div>
                 <div class="sideMenu">
-                    <div class="btnSideBar" id="mentorGeral" onclick="redirectToMentores()">
-                        <span>
-                            <i class="fa-solid fa-user-tie" style="color: #ededed;"></i>
-                        </span>
-                        Mentores
-                    </div>
-                    <div class="btnSideBar" id="mentorClass" onclick="redirectToMentorias()">
-                        <span>
-                            <i class="fa-regular fa-address-book" style="color: #ededed;"></i>
-                        </span>
-                        Mentorias
-                    </div>
-                    <div class="btnSideBar" id="mentorRooms" onclick="redirectToClasses()">
-                        <span>
-                            <i class="fa-solid fa-school"></i>
-                        </span>
-                        Turmas
-                    </div>
-                    <div class="btnSideBar" id="mentorStudents" onclick="redirectToAlunos()">
-                        <span>
-                            <i class="fa-solid fa-clipboard-user"></i>
-                        </span>
-                        Aluno
-                    </div>
+                    <a href="../mentor/mentorIndex.html">
+                        <div class="btnSideBar" id="mentorGeral">
+                            <span>
+                                <i class="fa-solid fa-user-tie" style="color: #ededed;"></i>
+                            </span>
+                            Mentores
+                        </div>
+                    </a>
+                    <a href="../mentoria/mentoriaIndex.html">
+                        <div class="btnSideBar" id="mentorClass">
+                            <span>
+                                <i class="fa-regular fa-address-book" style="color: #ededed;"></i>
+                            </span>
+                            Mentorias
+                        </div>
+                    </a>
+                    <a href="../turmas/turmasIndex.html">
+                        <div class="btnSideBar" id="mentorRooms" onclick="redirectToClasses()">
+                            <span>
+                                <i class="fa-solid fa-school"></i>
+                            </span>
+                            Turmas
+                        </div>
+                    </a>
+                    <a href="../alunos/alunosIndex.html">
+                        <div class="btnSideBar" id="mentorStudents" onclick="redirectToAlunos()">
+                            <span>
+                                <i class="fa-solid fa-clipboard-user"></i>
+                            </span>
+                            Aluno
+                        </div>
+                    </a>
                 </div>
             </div>
         </aside>
@@ -63,16 +71,21 @@
         <div class="boxContent">
             <header class="headerUser">
                 <div class="headerUserContent">
-                    <i class="bi bi-person-circle"></i>
-                    <div class="userLogin">
-                        <p><b>User</b></p>
-                        <p>user@gmail.com</p>
+                    <div>   
+                        <i class="fa-solid fa-circle-user fa-3x" style="color: #6950A1;"></i>
+                    </div>
+                    <div>
+                        <div class="userName" id="userName">Arthur Doyle</div>
+                        <div class="userEmail" id="userEmail">swordLetter@gmail.com</div>
                     </div>
                 </div>
             </header>
 
+
             <div class="titleBackMain">
-                <box-icon name='left-arrow-alt' style="background-color:#c5bebe; border-radius: 15px; padding: 15px;"></box-icon>
+                <a href="mentoriaIndex.html">
+                    <button class="btnIconsBack"><i class="fa-solid fa-arrow-left" style="color: #616161;"></i></button>
+                </a>
                 <h4>Nova mentoria</h4>
             </div>
 
@@ -92,21 +105,21 @@
                                 <select  class="selectInp" type="text" id="nomeMentor"></select>
                             </div>
                         </div>
-                </form>
-                    <div class="statusToggle">
-                        <p class="label">Status</p>
-                        <div class="toggleContainer">
-                              <input onclick="toggleStatus()" type="checkbox" name="statusToggle" id="statusToggle" />
-                              <label for="statusToggle" class="toggleSwitch">
-                                <span class="slider"></span>
-                            </label>
-                            <p id="statusTxt">Inativo</p>
-                            <label for="statusToggle"></label>
+                        <div class="statusToggle">
+                            <p class="label">Status</p>
+                            <div class="toggleContainer">
+                                  <input onclick="toggleStatus()" type="checkbox" name="statusToggle" id="statusToggle" />
+                                  <label for="statusToggle" class="toggleSwitch">
+                                    <span class="slider"></span>
+                                </label>
+                                <p id="statusTxt">Inativo</p>
+                                <label for="statusToggle"></label>
+                            </div>
+                            <button class="btnGetCard" id="salvaMentoria" type="submit">
+                                Salvar
+                            </button>
                         </div>
-                        <button class="btnGetCard" id="salvaMentoria" type="submit">
-                            Salvar
-                        </button>
-                    </div>
+                </form>
                 </main>
             </main>
 
@@ -115,6 +128,5 @@
 
     </div>
 
-    <script src="../../js/mentoria/cadastro.js" defer></script>
-</body>
+    <script src="../../js/mentoria/cadastro.js" defer></script></body>
 </html>

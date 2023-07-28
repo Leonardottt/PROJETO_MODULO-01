@@ -87,9 +87,10 @@ const newMentorBtn = document.getElementById('newMentorBtn');
 
 // --------------EDITA MENTOR-------------------
 const editarMentor = (id) => {
-    window.location = `mentorEditavel.html?id=${id}`
+    window.location = `mentoriaEditavel.html?id=${id}`
 // console.log('Editar Mentor:', idMentor);
 };
+
 
 
 // --------------DELETA MENTOR--------------------------//
@@ -112,26 +113,3 @@ const excluirMentor = async (id) => {
 
 //buscar e renderizar os dados dos mentores
 getMentorias();
-
-
-
-
-
-
-
-//vai para pagina mentoias
-const redirectToMentorias = () => {
-    window.location = "content\mentoria\mentoriaIndex.html"
-  }
- //vai para pagina turmas
- const redirectToClasses = () => {
-    window.location = "content\turmas\turmasIndex.html"
- }
- //vai para pagina alunos
- const redirectToAlunos = () => {
-    window.location = "content\alunos\alunosIndex.html"
- }
- //retorna a pag novoMentor
- const redirectToMentores = () => {
-   window.location = "mentorIndex.html"
- }

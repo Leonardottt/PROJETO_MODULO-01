@@ -1,4 +1,5 @@
-let mentorsData = []; // Definindo a variável mentorsData como uma array vazia
+//------------declarada a var mentorsData como uma array vazia---------//
+let mentorsData = [];
 
 const renderMentor = (mentores) => {
   const dataHeaderFirst = document.getElementById('dataHeaderFirst');
@@ -29,7 +30,8 @@ const renderMentor = (mentores) => {
 
 
 
-// ----------------- FUNÇÃO PARA BUSCAR A LISTA DE MENTORES -----------------
+// ----------------- FUNÇÃO PARA BUSCAR A LISTA DE MENTORES -----------------//
+
 const getMentores = async () => {
   try {
     const response = await fetch("http://localhost:3000/mentores");
@@ -38,14 +40,14 @@ const getMentores = async () => {
     }
     const mentores = await response.json();
     mentorsData.push(...mentores);
-    renderMentor(mentores); // Corrigindo o nome da função para renderMentor
+    renderMentor(mentores); 
   } catch (error) {
     console.error("Erro ao buscar mentores:", error);
   }
 };
 
 
-// ----------------- FUNÇÃO PARA FILTRAR A LISTA DE MENTORES COM BASE NA BARRA PESQUISA -----------------
+// ------ FUNÇÃO PARA FILTRAR A LISTA DE MENTORES COM BASE NA BARRA PESQUISA ------------//
 
 const searchInput = document.getElementById('searchInput');
 
@@ -55,10 +57,10 @@ const filterMentores = () => {
     mentor.nome.toLowerCase().includes(searchTerm) ||
     mentor.email.toLowerCase().includes(searchTerm)
   );
-  renderMentor(filteredMentores); // Corrigindo o nome da função para renderMentor
+  renderMentor(filteredMentores); 
 };
 
-// EVENTO DE DIGITAÇÃO NO CAMPO DE PESQUISA
+//-------------EVENTO DE DIGITAÇÃO NO CAMPO DE PESQUISA--------//
 searchInput.addEventListener('input', filterMentores);
 
 
@@ -68,7 +70,7 @@ const newMentorBtn = document.getElementById('newMentorBtn');
     window.location = "mentorCadastro.html";
   });
 
-// --------------EDITA MENTOR-------------------
+// --------------EDITA MENTOR-------------------//
 const editarMentor = (id) => {
     window.location = `mentorEditavel.html?id=${id}`
 // console.log('Editar Mentor:', idMentor);
@@ -83,34 +85,15 @@ const excluirMentor = async (id) => {
         method: 'DELETE'
       });
   
-      // Remove o mentor do array mentorsData local
+//---------------------REMOVE O MENTOR DO ARRAY mentorsData local-----------//
       mentorsData = mentorsData.filter(mentor => mentor.id !== id);
   
-      // Atualiza a lista de mentores na página
+//Atualiza lista de mentores na página
       renderMentor(mentorsData);
     } catch (error) {
       console.error('Erro ao excluir mentor:', error);
     }
   };
 
-//buscar e renderizar os dados dos mentores
+//----------BUSCAR E RENDERIZA OS DADOS DOS MENTORES-----------//
 getMentores();
-
-
-
-//vai para pagina mentoias
-const redirectToMentorias = () => {
-    window.location = "content\mentoria\mentoriaIndex.html"
-  }
- //vai para pagina turmas
- const redirectToClasses = () => {
-    window.location = "content\turmas\turmasIndex.html"
- }
- //vai para pagina alunos
- const redirectToAlunos = () => {
-    window.location = "content\alunos\alunosIndex.html"
- }
- //retorna a pag novoMentor
- const redirectToMentores = () => {
-   window.location = "mentorIndex.html"
- }

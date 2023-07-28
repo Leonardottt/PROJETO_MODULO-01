@@ -1,3 +1,4 @@
+//---------------SOLICITAÇÃO POST NA API, SE NÃO ROLAR VAI TER MSG XoXo------------//
 const novomentor = async (mentores) => {
   try {
     await fetch('http://localhost:3000/mentores', {
@@ -14,6 +15,8 @@ const novomentor = async (mentores) => {
   }
 };
 
+
+//-----OBTÉM INFORMAÇÕES DOS FORM GARANTINDO QUE ELAS SEJAM SALVAS E CONVERTIDAS PARA SEREM GUARDADAS----------//
 const formulario = document.getElementById('formulario');
 formulario.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -34,24 +37,11 @@ formulario.addEventListener('submit', (event) => {
   novomentor(mentores);
 });
 
+//------CASO O FORM DO CÓDIGO ANTERIOR ESTEJA NÃO ESTEJA TOTAL PREENCHIDO ELE NÃO DEIXA IR ADIANTE--------// 
+//-------------GARANTE QUE NÃO HAVERÁ ARRAYS VAZIAS!------------//
 const validarCamposPreenchidos = (nome, email) => {
   return nome.trim() !== '' && email.trim() !== '';
 };
 
 
 
-const redirectToMentorias = () => {
-  window.location = "content\mentoria\mentoriaIndex.html"
-}
-//vai para pagina turmas
-const redirectToClasses = () => {
-  window.location = "content\turmas\turmasIndex.html"
-}
-//vai para pagina alunos
-const redirectToAlunos = () => {
-  window.location = "content\alunos\alunosIndex.html"
-}
-//retorna a pag novoMentor
-const redirectToMentores = () => {
- window.location = "../../content/mentor/mentorIndex.html"
-}
