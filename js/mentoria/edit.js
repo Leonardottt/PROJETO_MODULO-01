@@ -3,7 +3,7 @@ let mentoriasId = null;
 
 const buscarMentor = async (id) => {
     try {
-        const resposta = await fetch(`http://localhost:3000/mentores/${id}`);
+        const resposta = await fetch(`https://apimentorclass.onrender.com/mentores/${id}`);
         const mentor = await resposta.json();
         return mentor;
     } catch (error) {
@@ -14,7 +14,7 @@ const buscarMentor = async (id) => {
 
 const buscarMentores = async () => {
     try {
-        const resposta = await fetch(`http://localhost:3000/mentores`);
+        const resposta = await fetch(`https://apimentorclass.onrender.com/mentores`);
         const mentores = await resposta.json();
         return mentores;
     } catch (error) {
@@ -53,14 +53,14 @@ const getIdUrl = () => {
 };
 
 const buscartitulomentorias = async () => {
-    const resposta = await fetch(`http://localhost:3000/mentorias/${mentoriasId}`);
+    const resposta = await fetch(`https://apimentorclass.onrender.com/mentorias/${mentoriasId}`);
     const mentorias = await resposta.json();
     return mentorias;
 };
 
 const editarMetoria = async (mentorias) => {
     try {
-        await fetch(`http://localhost:3000/mentorias/${mentoriasId}`, {
+        await fetch(`https://apimentorclass.onrender.com/mentorias/${mentoriasId}`, {
             method: 'PUT',
             headers: {
                 "Accept": 'application/json, text/plain, */*',
