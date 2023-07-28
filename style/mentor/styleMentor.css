@@ -196,10 +196,10 @@ searchBtn{
 }
 
 .dataList{
-    height: 50px;
-    padding: 20px 34px;
+    height: 80px;
+    padding: 28px 40px;
     align-items: center ;
-    margin: 8px 0;
+    margin: -17px 0;
 }
 .dataList :nth-child(1){
     margin-right: 5px;

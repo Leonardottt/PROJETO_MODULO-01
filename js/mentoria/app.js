@@ -1,27 +1,37 @@
-let mentorsData = []; // Definindo a variável mentorsData como uma array vazia
+// ---------------------MENTORIA INDEX----------------------------//
 
-const renderMentor = (mentores) => {
+const renderMentor = (mentorias) => {
   const dataHeaderFirst = document.getElementById('dataHeaderFirst');
   const dataHeaderSecond = document.getElementById('dataHeaderSecond');
   const dataHeaderThird = document.getElementById('dataHeaderThird');
+  const dataHeaderFourth = document.getElementById('dataHeaderFourth');
 
   dataHeaderFirst.innerHTML = '';
   dataHeaderSecond.innerHTML = '';
   dataHeaderThird.innerHTML = '';
+  dataHeaderFourth.innerHTML = '';
 
-  mentores.forEach((mentor, index) => {
+  let contador = 1;
+  mentorias.forEach((mentoria, index) => {
     const btnList = index % 2 === 0 ? 'colorChangeOdd' : 'colorChangeEven';
 
     dataHeaderFirst.innerHTML += `
-      <p class="dataList ${btnList}">${mentor.nome}</p>
+      <p class="dataList ${btnList}">${mentoria.mentoria}</p>
     `;
     dataHeaderSecond.innerHTML += `
-      <p class="dataList ${btnList}">${mentor.email}</p>
+      <p class="dataList ${btnList}">${mentoria.mentor}</p>
     `;
-    dataHeaderThird.innerHTML += `
+
+    if (mentoria.checkbox === true) {
+      dataHeaderThird.innerHTML += `<p class="dataList ${btnList}"><span class="chekedOn">Ativo</span></p>`;
+    } else if (mentoria.checkbox === false) {
+      dataHeaderThird.innerHTML += `<p class="dataList ${btnList}"><span class="chekedOff">Inativo</span></p>`;
+    }
+
+    dataHeaderFourth.innerHTML += `
       <div class="dataList headerContent ${btnList}">
-        <button onclick="editarMentor(${mentor.id})" class="btnIcons btnEdit"><i class="fa-solid fa-pencil"></i></button>
-        <button onclick="excluirMentor(${mentor.id})" class="btnIcons btnTrash"><i class="fa-solid fa-trash"></i></button>
+        <button onclick="editarMentor(${mentoria.id})" class="btnIcons btnEdit"><i class="fa-solid fa-pencil"></i></button>
+        <button onclick="excluirMentor(${mentoria.id})" class="btnIcons btnTrash"><i class="fa-solid fa-trash"></i></button>
       </div>
     `;
   });
@@ -29,21 +39,25 @@ const renderMentor = (mentores) => {
 
 
 
+// Array que conterá os dados dos mentores
+let mentorsData = [];
+
 // ----------------- FUNÇÃO PARA BUSCAR A LISTA DE MENTORES -----------------
-const getMentores = async () => {
+const getMentorias = async () => {
   try {
-    const response = await fetch("http://localhost:3000/mentores");
+    const response = await fetch("http://localhost:3000/mentorias");
     if (!response.ok) {
       throw new Error('Erro ao buscar mentores.');
     }
-    const mentores = await response.json();
-    mentorsData.push(...mentores);
-    renderMentor(mentores); // Corrigindo o nome da função para renderMentor
+    const data = await response.json();
+    mentorsData = data; // Define a variável mentorsData com os dados da API diretamente
+    renderMentor(mentorsData);
   } catch (error) {
     console.error("Erro ao buscar mentores:", error);
   }
 };
-
+//---------chamada da função e renderização------------//
+getMentorias();
 
 // ----------------- FUNÇÃO PARA FILTRAR A LISTA DE MENTORES COM BASE NA BARRA PESQUISA -----------------
 
@@ -52,49 +66,56 @@ const searchInput = document.getElementById('searchInput');
 const filterMentores = () => {
   const searchTerm = searchInput.value.toLowerCase();
   const filteredMentores = mentorsData.filter(mentor =>
-    mentor.nome.toLowerCase().includes(searchTerm) ||
-    mentor.email.toLowerCase().includes(searchTerm)
+    mentor.mentoria.toLowerCase().includes(searchTerm) ||
+    mentor.mentor.toLowerCase().includes(searchTerm)
   );
-  renderMentor(filteredMentores); // Corrigindo o nome da função para renderMentor
+  renderMentor(filteredMentores);
 };
 
 // EVENTO DE DIGITAÇÃO NO CAMPO DE PESQUISA
 searchInput.addEventListener('input', filterMentores);
 
 
+
+
 //-------------------NEW MENTOR---------------------//
 const newMentorBtn = document.getElementById('newMentorBtn');
   newMentorBtn.addEventListener('click', () => {
-    window.location = "mentorCadastro.html";
+    window.location = "mentoriaCadastro.html";
   });
+
 
 // --------------EDITA MENTOR-------------------
 const editarMentor = (id) => {
     window.location = `mentorEditavel.html?id=${id}`
 // console.log('Editar Mentor:', idMentor);
-
 };
 
 
 // --------------DELETA MENTOR--------------------------//
 const excluirMentor = async (id) => {
-    try {
-      await fetch(`http://localhost:3000/mentores/${id}`, {
-        method: 'DELETE'
-      });
-  
-      // Remove o mentor do array mentorsData local
-      mentorsData = mentorsData.filter(mentor => mentor.id !== id);
-  
-      // Atualiza a lista de mentores na página
-      renderMentor(mentorsData);
-    } catch (error) {
-      console.error('Erro ao excluir mentor:', error);
-    }
-  };
+  try {
+    await fetch(`http://localhost:3000/mentorias/${id}`, {
+      method: 'DELETE'
+    });
+
+    // Remove o mentor do array mentorsData local
+    mentorsData = mentorsData.filter(mentoria => mentoria.id !== id);
+
+    // Atualiza a lista de mentores na página
+    renderMentor(mentorsData);
+  } catch (error) {
+    console.error('Erro ao excluir mentor:', error);
+  }
+};
+
 
 //buscar e renderizar os dados dos mentores
-getMentores();
+getMentorias();
+
+
+
+
 
 
 

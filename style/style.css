@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+/*--------------LOGIN-------------- */
 
 /* --------------TELA MENTORES - INDEX ---------------------------------------*/
 
@@ -20,7 +21,6 @@
     background: #482D83;
     padding-top: 5px;
     font-family: 'Poppins', sans-serif;
-    
 
 }
 .menu{
@@ -101,8 +101,6 @@ h4{
     margin-bottom: 32px;
     margin: 30px;
 }
-
-
 /* ---------------------------------CAIXA PAI---------------------------- */
 .mainContent{
     background: white;
@@ -113,8 +111,6 @@ h4{
     box-shadow: 0px 0px 25px 0px rgba(163, 163, 163, 0.2);
     margin-left: 15px;
 }
-  
-
 
 /* -------------------------ABAIXO HEADER----------------------------------*/
 .titleBackMain{
@@ -122,127 +118,124 @@ h4{
     margin-left: 15px;
 }
 
-/* ---------------------BOTÃO PESQUISA & BOTÃO CRIAR-----------------------*/
-searchBtn{
-    font-size: 16px;
-    width: 400px;
-    height: 56px;
-    border-radius: 16px;
-    padding-left: 16px;
-    border: 1.5px solid #E0E0E0;
-    border-radius: 16px;
-}
-.input {
-    width: 325px;
-    height: 40px;
-    border: 1px solid #E0E0E0;
-    border-radius: 10px;
-    color: #757575;
-    padding: 5px;
-    outline: none;
-}
-.greenBtn {
-    background-color: #00C247;
-    width: 220px;
-    height: 45px;
-    border: 1px solid #E6E6E6;
-    border-radius: 10px;
-    color: #EFFBF4;
-    font-weight: 400;
-    font-size: 15px;
-}
-.greenBtn:hover{
-    cursor: pointer;
-    background: #01a13c;
-    transition: 0.5s;
-}
-.searchBtn i{
-    position: absolute;
-    top: 205px;
-    left: 570px;
-}
-#searchGlass{
-    cursor: pointer;
-}
-
-
-/*---------------TABELA--------------------*/
-
-.headerContent{
+/* -------------------CADASTRONOVO------------------------------ */
+.formCad{
+    margin-left: 19px;
     display: flex;
 }
-.headerTab{
-    width: 100%;
-    text-align: center;
+.btnGet{
+    display: flex;  
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-right: 25px;
 }
 
-.headerTabAct{
-    text-align: center;
+input{
+    width: 345px;
+    height: 50px;
+    border-radius: 16px;
+    border: 1.5px solid #E0E0E0;
+    padding: 10px;
+}
+.titleEditCard{
+    padding: 15px;
+    margin-left: 19px;
+    left: 5px;
+    font-size: 20px;
+    color: #482D83;
 }
 
-.leftCurve{
-    border-radius: 16px 0px 0px 0px;
-}
-.rightCurve{
-    border-radius: 0px 16px 0px 0px;
-}
-
-.dataBox{
+.btnGetCard {
+    margin:25px; /* Margem vertical de 10px e margem horizontal de 5px */
+    padding: 10px 20px;
+    background: #482D83;
     color: white;
-    background:#482D83;
-    height: 65px;
-    padding: 24px 40px;
-    /* max-width: 100%; */
-}
-
-.dataList{
-    height: 80px;
-    padding: 28px 40px;
-    align-items: center ;
-    margin: -17px 0;
-}
-.dataList :nth-child(1){
-    margin-right: 5px;
-
-}
-.dataList img:hover{
+    border: none;
+    width: 350px;
+    border-radius: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  .btnGetCard:hover {
+    background: #564696;
+    transform: translateY(-2px);
+  }
+/* ---------BOTAO MANUAL----------------------------- */
+/* .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-top: 45vh;
+    left: 55vh;
+  }
+  .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 34px;
     cursor: pointer;
 }
+.toogleBtn{
+    margin-left:30px;
+} */
+/* checkebox */
 
-.colorChangeOdd{
-    background-color: #d6d5d5;
-}
-.colorChangeEven{
-    background-color: #f2f0f0;
-}
-.btnEdit{
-    color: #004ce8;
-}
-.btnTrash{
-    color: #ff3333;
-}
-.btnIcons {
-    border-radius: 20px;
-    border: 1px solid #BDBDBD;
-    background-color: #FFFFFF;
+.statusToggle {
+    margin: 10px 30px ;
+    /* font-weight: 800; */
+  }
+  
+  .statusToggle .toggleContainer {
+    display: flex;
+    align-items: center;
+  }
+  #statusTxt{
+    margin: 5px;
+  }
+  .toggleSwitch {
+    position: relative;
+    width: 60px;
     height: 30px;
-    width: 30px;
+    border-radius: 40px;
+    background-color: #c20000;
+    cursor: pointer;
+    transition: background-color 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+  }
+  
+  .slider {
+    background-color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  #statusToggle {
+    display: none;
+  }
+  
+  #statusToggle:checked + .toggleSwitch {
+    background-color: #4ec200;
+  }
+  
+  #statusToggle:checked + .toggleSwitch .slider {
+    transform: translateX(28px);
+  }
 
-}
-.btnIcons i{
-    margin-left: 3px
-}
-
-.chekedOn{ 
-    color: #00C247;
-    background: #D9FEE6;
-    padding: 6px 18px;
-    border-radius: 8px;
-}
-.chekedOff{
-    color: #FF3333;
-    background: #FFE1E1;
-    padding: 7px 10px;
-    border-radius: 8px;
-
+.selectInp{
+    width: 345px;
+    height: 50px;
+    border-radius: 16px;
+    border: 1.5px solid #E0E0E0;
+    padding: 10px;
 }
