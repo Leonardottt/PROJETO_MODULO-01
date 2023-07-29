@@ -14,6 +14,7 @@ intuitiva e amigável, o MentorClass permite aos usuários organizar e acompanha
 eficiente, tornando o processo de gestão educacional mais prático e eficaz.
 
 Recursos Principais:
+
 Cadastro e gerenciamento de turmas, alunos, professores e mentorias.
 Acompanhamento de informações detalhadas sobre cada turma, como mentor responsável, mentoria oferecida,
 horários e links relevantes.
