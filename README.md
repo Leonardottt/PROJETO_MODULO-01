@@ -8,6 +8,7 @@ Dev: Leonardo Mateus
 MentorClass
 
 Sobre o MentorClass:
+
 O MentorClass é um aplicativo web desenvolvido com o objetivo de facilitar o gerenciamento de turmas,
 alunos, professores e mentorias em um ambiente educacional ou de treinamento. Com uma interface
 intuitiva e amigável, o MentorClass permite aos usuários organizar e acompanhar informações de forma
