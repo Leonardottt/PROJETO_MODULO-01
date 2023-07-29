@@ -1,6 +1,3 @@
-//------------declarada a var mentorsData como uma array vazia---------//
-let mentorsData = [];
-
 const renderAlunos = (alunos) => {
   const dataHeaderFirst = document.getElementById('dataHeaderFirst');
   const dataHeaderSecond = document.getElementById('dataHeaderSecond');
@@ -21,79 +18,61 @@ const renderAlunos = (alunos) => {
     `;
     dataHeaderThird.innerHTML += `
       <div class="dataList headerContent ${btnList}">
-        <button onclick="editarMentor(${aluno.id})" class="btnIcons btnEdit"><i class="fa-solid fa-pencil"></i></button>
-        <button onclick="excluirMentor(${aluno.id})" class="btnIcons btnTrash"><i class="fa-solid fa-trash"></i></button>
+        <button onclick="editarAluno(${aluno.id})" class="btnIcons btnEdit"><i class="fa-solid fa-pencil"></i></button>
+        <button onclick="excluirAluno(${aluno.id})" class="btnIcons btnTrash"><i class="fa-solid fa-trash"></i></button>
       </div>
     `;
   });
 };
 
-
-
-// ----------------- FUNÇÃO PARA BUSCAR A LISTA DE MENTORES -----------------//
+let alunosData = [];
 
 const getAlunos = async () => {
   try {
-    const response = await fetch("http://localhost:3000/alunos");
+    const response = await fetch("https://apimentorclass.onrender.com/alunos");
     if (!response.ok) {
       throw new Error('Erro ao buscar alunos.');
     }
-    const alunos = await response.json();
-    mentorsData.push(...alunos);
-    renderAlunos(alunos); 
+    const data = await response.json();
+    alunosData = data;
+    renderAlunos(alunosData);
   } catch (error) {
     console.error("Erro ao buscar alunos:", error);
   }
 };
 
-
-// ------ FUNÇÃO PARA FILTRAR A LISTA DE MENTORES COM BASE NA BARRA PESQUISA ------------//
-
 const searchInput = document.getElementById('searchInput');
 
 const filterAlunos = () => {
   const searchTerm = searchInput.value.toLowerCase();
-  const filteredAlunos = mentorsData.filter(aluno =>
+  const filteredAlunos = alunosData.filter(aluno =>
     aluno.aluno.toLowerCase().includes(searchTerm) ||
     aluno.email.toLowerCase().includes(searchTerm)
   );
-  renderAlunos(filteredAlunos); 
+  renderAlunos(filteredAlunos);
 };
 
-//-------------EVENTO DE DIGITAÇÃO NO CAMPO DE PESQUISA--------//
 searchInput.addEventListener('input', filterAlunos);
 
-
-//-------------------NEW MENTOR---------------------//
 const newStudentBtn = document.getElementById('newStudentBtn');
 newStudentBtn.addEventListener('click', () => {
-    window.location = "alunoCadastro.html";
-  });
+  window.location = "alunoCadastro.html";
+});
 
-// --------------EDITA MENTOR-------------------//
-const editarMentor = (id) => {
-    window.location = `alunoEditavel.html?id=${id}`
-// console.log('Editar Mentor:', idMentor);
-
+const editarAluno = (id) => {
+  window.location = `alunoEditavel.html?id=${id}`;
 };
 
+const excluirAluno = async (id) => {
+  try {
+    await fetch(`https://apimentorclass.onrender.com/alunos/${id}`, {
+      method: 'DELETE'
+    });
+    alunosData = alunosData.filter(aluno => aluno.id !== id);
+    renderAlunos(alunosData);
+  } catch (error) {
+    console.error('Erro ao excluir aluno:', error);
+  }
+};
 
-// --------------DELETA MENTOR--------------------------//
-const excluirMentor = async (id) => {
-    try {
-      await fetch(`http://localhost:3000/alunos/${id}`, {
-        method: 'DELETE'
-      });
-  
-//---------------------REMOVE O MENTOR DO ARRAY mentorsData local-----------//
-      mentorsData = mentorsData.filter(aluno => aluno.id !== id);
-  
-//Atualiza lista de mentores na página
-      renderAlunos(mentorsData);
-    } catch (error) {
-      console.error('Erro ao excluir mentor:', error);
-    }
-  };
-
-//----------BUSCAR E RENDERIZA OS DADOS DOS MENTORES-----------//
 getAlunos();

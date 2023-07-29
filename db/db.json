@@ -1,60 +1,50 @@
 {
   "mentores": [
     {
-      "nome": "Arthur Conan Doyle",
-      "email": "xeroxHomes@example.com",
+      "nome": "leonardo Mateus",
+      "email": "leonardomateusttt@exemplo.com",
       "id": 1
     },
     {
-      "nome": "Bauman",
-      "email": "aquaDeLamor@example.com",
-      "id": 2
-    },
-    {
-      "nome": "Teemo",
-      "email": "teemo@example.com",
+      "nome": "testeDe User",
+      "email": "Teste@example",
       "id": 3
     },
     {
-      "nome": "Maximilian Renoire",
-      "email": "vampireMasquerade@example.com",
+      "nome": "lucas monteiro",
+      "email": "lucasCharp@example.com",
       "id": 4
     },
     {
-      "nome": "Sett",
-      "email": "settFromMamis@example.com",
+      "nome": "ricardo",
+      "email": "teste@ricadoEletro.com",
       "id": 5
-    },
-    {
-      "nome": "Ekko",
-      "email": "seguraCarteira@example.com",
-      "id": 6
     }
   ],
   "mentorias": [
     {
-      "mentoria": "estoicismo",
-      "mentor": "Bauman",
+      "mentoria": "mexe com cogumelo",
+      "mentor": "victor errado",
+      "checkbox": true,
+      "id": 2
+    },
+    {
+      "mentoria": "teste de usinagem ",
+      "mentor": "lucas monteiro",
       "checkbox": true,
       "id": 3
     },
     {
-      "mentoria": "pericia",
-      "mentor": "Arthur Conan Doyle",
+      "mentoria": "quebra quebra",
+      "mentor": "lucas monteiro",
       "checkbox": false,
       "id": 4
     },
     {
-      "mentoria": "ocultismo e história vampírica - Tremere I",
-      "mentor": "Maximilian Renoire",
+      "mentoria": "testeMento",
+      "mentor": "leonardo Mateus",
       "checkbox": true,
       "id": 5
-    },
-    {
-      "mentoria": "teste",
-      "mentor": "Teemo",
-      "checkbox": false,
-      "id": 6
     }
   ],
   "semanas": [
@@ -79,61 +69,21 @@
       "id": 5
     }
   ],
-  "turmas": [
-    {
-      "turma": "turma1",
-      "mentor": "yone",
-      "mentoria": "sobrevivendo como Tremere",
-      "datadeinicio": "2024-01-16",
-      "diadasemana": "Segunda-feira",
-      "horarioinicio": "08:00",
-      "horariofim": "12:00",
-      "encontros": "3",
-      "link": "https://www.worldofdarkness.com/",
-      "id": 1
-    },
-    {
-      "turma": "turma2",
-      "mentor": "teemo",
-      "mentoria": "mascara",
-      "datadeinicio": "2024-02-20",
-      "diadasemana": "Quarta-feira",
-      "horarioinicio": "16:20",
-      "horariofim": "17:21",
-      "encontros": "5",
-      "link": "https://worldofwarcraft.blizzard.com/pt-br/",
-      "id": 2
-    },
-    {
-      "turma": "turma 5",
-      "mentor": "yone",
-      "mentoria": "treino perna",
-      "datadeinicio": "2024-03-29",
-      "horarioinicio": "18:30",
-      "horariofim": "21:30",
-      "encontros": "3",
-      "link": "https://www.mundoboaforma.com.br/arnold-schwarzenegger-dieta-treino-medidas-fotos-e-videos/",
-      "id": 3
-    }
-  ],
   "alunos": [
     {
-      "aluno": "Guts",
-      "email": "desenvolvedor199759@gmail.com",
-      "turma": "turma 3",
-      "id": 1
+      "aluno": "teste",
+      "email": "gNew@example",
+      "id": 6
     },
     {
-      "aluno": "casca",
-      "email": "desenvolvedor199759@gmail.com",
-      "turma": "turma 3",
-      "id": 2
+      "aluno": "testa",
+      "email": "testa@example.com",
+      "id": 7
     },
     {
-      "aluno": "Grifith",
-      "email": "desenvolvedor199759@gmail.com",
-      "turma": "turma 6",
-      "id": 4
+      "aluno": "AGORAFOIGAROTA!!!!",
+      "email": "ezequiel@example.com",
+      "id": 8
     }
   ]
 }

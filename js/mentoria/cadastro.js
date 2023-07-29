@@ -1,7 +1,7 @@
 //-----------------PEGA A ID NOS MENTORES PARA USAR NO SELECT-------------------
 const buscarMentor = async (id) => {
     try {
-        const resposta = await fetch(`http://localhost:3000/mentores/${id}`);
+        const resposta = await fetch(`https://apimentorclass.onrender.com/mentores/${id}`);
         const mentor = await resposta.json();
         return mentor;
     } catch (error) {
@@ -13,7 +13,7 @@ const buscarMentor = async (id) => {
 //-------------PEGA AS ID's DOS MENTORES PARA USAR NO SELECT(ACESSA TUDO)----------------------//
 const buscarMentores = async () => {
     try {
-        const resposta = await fetch(`http://localhost:3000/mentores`);
+        const resposta = await fetch(`https://apimentorclass.onrender.com/mentores`);
         const mentores = await resposta.json();
         return mentores;
     } catch (error) {
@@ -44,7 +44,7 @@ carregarSelect();
 //------------NOVAMETORIA-----------------//
 const novaMetoria = async (mentorias) => {
     try {
-        await fetch('http://localhost:3000/mentorias', {
+        await fetch('https://apimentorclass.onrender.com/mentorias', {
             method: 'POST',
             headers: {
                 "ACCEPT": 'application/json, text/plain, */*',

@@ -3,9 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-a{
-    text-decoration:none;
+    font-family: 'Sora', sans-serif;
 }
 
 /* --------------TELA MENTORES - INDEX ---------------------------------------*/
@@ -199,10 +197,13 @@ searchBtn{
 }
 
 .dataList{
-    height: 80px;
+    /* height: 80px;
     padding: 28px 40px;
     align-items: center ;
-    margin: -17px 0;
+    margin: -17px 0; */
+    height: 75px;
+    padding: 16px 40px;
+    margin: -20px 0;
 }
 .dataList :nth-child(1){
     margin-right: 5px;

@@ -45,7 +45,7 @@ let mentorsData = [];
 // ----------------- FUNÇÃO PARA BUSCAR A LISTA DE MENTORES -----------------
 const getMentorias = async () => {
   try {
-    const response = await fetch("http://localhost:3000/mentorias");
+    const response = await fetch("https://apimentorclass.onrender.com/mentorias");
     if (!response.ok) {
       throw new Error('Erro ao buscar mentores.');
     }
@@ -96,7 +96,7 @@ const editarMentor = (id) => {
 // --------------DELETA MENTOR--------------------------//
 const excluirMentor = async (id) => {
   try {
-    await fetch(`http://localhost:3000/mentorias/${id}`, {
+    await fetch(`https://apimentorclass.onrender.com/mentorias/${id}`, {
       method: 'DELETE'
     });
 
