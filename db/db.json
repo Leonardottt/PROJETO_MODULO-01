@@ -19,6 +19,11 @@
       "nome": "ricardo",
       "email": "teste@ricadoEletro.com",
       "id": 5
+    },
+    {
+      "nome": "maximorfo",
+      "email": "leonardo@mateus",
+      "id": 7
     }
   ],
   "mentorias": [
@@ -45,6 +50,18 @@
       "mentor": "leonardo Mateus",
       "checkbox": true,
       "id": 5
+    },
+    {
+      "mentoria": "nova mentoria pra ser testada",
+      "mentor": "ricardo",
+      "checkbox": false,
+      "id": 6
+    },
+    {
+      "mentoria": "testesAtivado",
+      "mentor": "maximorfo",
+      "checkbox": false,
+      "id": 7
     }
   ],
   "semanas": [
@@ -69,6 +86,20 @@
       "id": 5
     }
   ],
+  "turmas": [
+    {
+      "turma": "02",
+      "mentor": "maximorfo",
+      "mentoria": "testesAtivado",
+      "dataInicio": "2023-07-31",
+      "diaSemana": "Segunda-feira",
+      "horaInicio": "18:00",
+      "horaFim": "19:30",
+      "encontros": "02",
+      "link": "https://www.youtube.com/watch?v=7n0dREFJoqc&t=1s",
+      "id": 1
+    }
+  ],
   "alunos": [
     {
       "aluno": "teste",
@@ -81,8 +112,8 @@
       "id": 7
     },
     {
-      "aluno": "AGORAFOIGAROTA!!!!",
-      "email": "ezequiel@example.com",
+      "aluno": "meninoNOvo",
+      "email": "novisinhom@mtes",
       "id": 8
     }
   ]

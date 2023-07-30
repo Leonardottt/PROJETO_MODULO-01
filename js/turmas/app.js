@@ -80,14 +80,22 @@ const renderTurmas = (turmas) => {
   
   searchInput.addEventListener('input', filterTurmas);
   
+
+
   const newMentorBtn = document.getElementById('newMentorBtn');
   newMentorBtn.addEventListener('click', () => {
     window.location = "turmaCadastro.html";
   });
   
+
+
   const editarTurma = (id) => {
     window.location = `turmaEditavel.html?id=${id}`;
   };
+  
+
+
+
   
   const excluirTurma = async (id) => {
     try {

@@ -47,3 +47,10 @@
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
 }
+input{
+    font-size: 15px;
+}
+
+#btnLogin{
+    margin-top: 25px;
+}
