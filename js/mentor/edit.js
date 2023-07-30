@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     return mentor;
   };
 
+
+  
   // ----------------- ATUALIZANDO OS DADOS DO MENTOR -----------------
   const alteraItem = async (mentor) => {
     await fetch(`https://apimentorclass.onrender.com/mentores/${mentoresId}`, {
@@ -30,11 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location = 'mentorIndex.html';
   };
 
+
+
   // ----------------- CARREGANDO OS DADOS NO FORMULÁRIO -----------------
   const carregarDadosFormulario = async (mentor) => {
     document.getElementById('nameChange').value = mentor.nome;
     document.getElementById('emailChange').value = mentor.email;
   };
+
+
 
   // ----------------- CARREGANDO OS DADOS DO MENTOR -----------------
   const carregarDados = async () => {
@@ -42,6 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mentor = await buscaMentor();
     carregarDadosFormulario(mentor);
   };
+
+
 
   // ----------------- EVENTO DE ENVIO DO FORMULÁRIO -----------------
   formulario.addEventListener('submit', async (e) => {

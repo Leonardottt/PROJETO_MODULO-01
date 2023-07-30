@@ -104,12 +104,12 @@ const renderTurmas = (turmas) => {
       });
   
       turmasData = turmasData.filter(turma => turma.id !== id);
-  
-      renderTurmas(turmasData);
+      
+      renderTurmas(turmasData);//atualiza lista pós excluir
     } catch (error) {
       console.error('Erro ao excluir turma:', error);
     }
   };
   
-  getTurmas();
+  getTurmas(); //buscar e renderizar
   

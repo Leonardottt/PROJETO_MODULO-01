@@ -28,7 +28,11 @@ const carregarMentoriaSelect = async () => {
     console.error("ERRO AO CARREGAR A LISTA DE MENTORIAS:", error);
   }
 };
+
 carregarMentoriaSelect();
+
+
+
 
 const buscarMentor = async (id) => {
   const resposta = await fetch(`https://apimentorclass.onrender.com/mentores/${id}`);
@@ -57,7 +61,10 @@ const carregarMentorSelect = async () => {
     console.error("ERRO AO CARREGAR A LISTA DE MENTORES:", error);
   }
 };
+
 carregarMentorSelect();
+
+
 
 const buscarSemana = async (id) => {
   const response = await fetch(`https://apimentorclass.onrender.com/semanas/${id}`);
@@ -86,7 +93,13 @@ const carregarSelectDiasSemana = async () => {
     console.error("ERRO AO CARREGAR A LISTA DE SEMANAS:", error);
   }
 };
+
+
 carregarSelectDiasSemana();
+
+
+
+
 
 const extrairInformacoesFormulario = () => {
   const turma = formulario.elements['turma'].value;
@@ -96,8 +109,8 @@ const extrairInformacoesFormulario = () => {
   const diaSemana = formulario.elements['diaSemana'].value;
   const horaInicio = formulario.elements['horaInicio'].value;
   const horaFim = formulario.elements['horaFim'].value;
-  const encontros = formulario.elements['meet'].value; // Corrigir o nome do campo
-  const link = formulario.elements['linkAula'].value; // Corrigir o nome do campo
+  const encontros = formulario.elements['meet'].value; //CORRIGIR 
+  const link = formulario.elements['linkAula'].value; 
 
   return {
     turma,

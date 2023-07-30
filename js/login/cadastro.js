@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
       if (username.trim() === '' || password.trim() === '') {
         alert('Por favor, preencha todos os campos do formulário.');
-        return; 
+        return;
       }
   
       //-----------Salvando no DB STORAGE------------------//
